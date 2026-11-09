@@ -187,17 +187,31 @@
         <p class="subtitle">Выберите возраст, чтобы посмотреть альбом</p>
 
 <!-- Блок музыкального плеера -->
-<div style="text-align: center; margin: 20px 0; background: white; padding: 15px; border-radius: 12px; box-shadow: var(--shadow);">
-    <p style="font-size: 0.9rem; color: #57606f; margin-bottom: 10px;"></p>
-    <audio id="bg-audio" loop>
-        <source src="Max Schultz - The Howler.mp3" type="audio/mpeg">
-        Ваш браузер не поддерживает аудио.
-    </audio>
-    <br>
-    <button onclick="toggleAudio()" id="audio-btn" style="background: var(--primary); color: white; border: none; padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; box-shadow: 0 4px 10px rgba(255,107,129,0.3);">
-        ▶ Включить музыку
-    </button>
-</div>
+    <!-- Компактная кнопка музыки без фона -->
+    <div style="text-align: center; margin: 15px 0;">
+        <audio id="bg-audio" loop>
+            <source src="Max Schultz - The Howler.mp3" type="audio/mpeg">
+            Ваш браузер не поддерживает аудио.
+        </audio>
+        <button onclick="toggleAudio()" id="audio-btn" style="background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 20px; font-size: 0.9rem; cursor: pointer; box-shadow: 0 4px 15px rgba(255,107,129,0.4);">
+            ▶ Включить музыку
+        </button>
+    </div>
+
+    <script>
+        function toggleAudio() {
+            const audio = document.getElementById('bg-audio');
+            const btn = document.getElementById('audio-btn');
+            
+            if (audio.paused) {
+                audio.play();
+                btn.textContent = '⏸ Выключить музыку';
+            } else {
+                audio.pause();
+                btn.textContent = '▶ Включить музыку';
+            }
+        }
+    </script>
 
 <script>
     function toggleAudio() {
